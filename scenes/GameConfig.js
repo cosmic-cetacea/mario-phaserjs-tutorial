@@ -1,9 +1,9 @@
 import CobaScene from "./CobaScene";
 
 export default {
-	width: 800,
-	height: 600,
-  backgroundColor: '#41C9E2',
+	width: 640,
+	height: 360,
+  backgroundColor: '#6AD4DD',
 	physics: {
 		default: 'arcade',
 		arcade: {

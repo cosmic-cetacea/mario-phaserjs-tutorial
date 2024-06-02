@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import ee from './EventCenter';
 import awan from '/assets/cloud.png';
 import mario from '/assets/mario_spritesheet.png';
 import tanah from '/assets/ground-long.png';
@@ -82,7 +83,18 @@ export default class CobaScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.tanah);
     this.physics.add.collider(this.koin, this.tanah);
     this.physics.add.overlap(this.player, this.koin, this.ambilKoin, null, this);
+
+    ee.on("PAUSE", this.pauseGame, this);
     
+  }
+
+  pauseGame(){
+    if (this.scene.isPaused()) {
+      this.scene.resume();
+    }
+    else {
+      this.scene.pause();
+    }
   }
 
   ambilKoin(player, koin){

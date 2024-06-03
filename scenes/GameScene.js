@@ -5,7 +5,7 @@ import mario from '/assets/mario_spritesheet.png';
 import tanah from '/assets/ground-long.png';
 import koin from '/assets/coin.png';
 import tring from '/assets/smb_coin.wav';
-
+import pauseSound from '/assets/smb_pause.wav';
 
 export default class GameScene extends Phaser.Scene {
   constructor(){
@@ -18,6 +18,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.spritesheet('mario', mario, {frameWidth: 16, frameHeight: 32});
     this.load.image('koin', koin);
     this.load.audio('tring', tring);
+    this.load.audio('pause-sound', pauseSound);
   }
 
   create(){
@@ -34,6 +35,7 @@ export default class GameScene extends Phaser.Scene {
     this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '28px'});
     this.koin = this.physics.add.image(50, 280, 'koin');
     this.suaraKoin = this.sound.add('tring');
+    this.suaraPause = this.sound.add('pause-sound');
 
     this.player = this.physics.add.sprite(150, 100, 'mario', 0);
     this.anims.create({
@@ -91,10 +93,12 @@ export default class GameScene extends Phaser.Scene {
 
   pauseGame(pausedText){
     if (this.scene.isPaused()) {
+      this.suaraPause.play();
       this.scene.resume();
       pausedText.setVisible(false);
     }
     else {
+      this.suaraPause.play();
       this.scene.pause();
       pausedText.setVisible(true);
     }

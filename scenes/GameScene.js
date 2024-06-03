@@ -33,6 +33,7 @@ export default class GameScene extends Phaser.Scene {
     this.tanah.create(300, 290, 'tanah');
     this.tanah.create(500, 250, 'tanah');
     this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '28px'});
+    this.scoreText.setScrollFactor(0);
     this.koin = this.physics.add.image(50, 280, 'koin');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');

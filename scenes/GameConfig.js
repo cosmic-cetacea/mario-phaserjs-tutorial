@@ -1,4 +1,4 @@
-import CobaScene from "./CobaScene";
+import GameScene from "./GameScene";
 import PauseMenuHandler from "./PauseMenuHandler";
 import Phaser from "phaser";
 
@@ -14,10 +14,10 @@ export default {
 		}
 	},
 	title: "Super Mario pakai phaserjs",
-	scene: [CobaScene, PauseMenuHandler],
+	scene: [GameScene , PauseMenuHandler],
   pixelArt: true,
-  scale: {
-    mode: Phaser.Scale.ScaleModes.FIT,
-    autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
-  },
+  // scale: {
+  //   mode: Phaser.Scale.ScaleModes.FIT,
+  //   autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
+  // },
 };

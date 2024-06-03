@@ -7,9 +7,9 @@ import koin from '/assets/coin.png';
 import tring from '/assets/smb_coin.wav';
 
 
-export default class CobaScene extends Phaser.Scene {
+export default class GameScene extends Phaser.Scene {
   constructor(){
-    super({key: "CobaScene"});
+    super({key: "GameScene"});
   }
 
   preload(){

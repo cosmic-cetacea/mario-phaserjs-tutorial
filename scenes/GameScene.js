@@ -1,24 +1,9 @@
 import Phaser from 'phaser';
 import evn from './EventCenter';
-import awan from '/assets/cloud.png';
-import mario from '/assets/mario_spritesheet.png';
-import tanah from '/assets/ground-long.png';
-import koin from '/assets/coin.png';
-import tring from '/assets/smb_coin.wav';
-import pauseSound from '/assets/smb_pause.wav';
 
 export default class GameScene extends Phaser.Scene {
   constructor(){
     super({key: "GameScene"});
-  }
-
-  preload(){
-    this.load.image('awan', awan);
-    this.load.image('tanah', tanah);
-    this.load.spritesheet('mario', mario, {frameWidth: 16, frameHeight: 32});
-    this.load.image('koin', koin);
-    this.load.audio('tring', tring);
-    this.load.audio('pause-sound', pauseSound);
   }
 
   create(){

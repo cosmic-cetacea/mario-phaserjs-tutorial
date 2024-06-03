@@ -22,7 +22,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create(){
-    this.score = 0;
     this.awan1 = this.add.image(100, 100, 'awan');
     this.awan2 = this.add.image(200, 50, 'awan');
     this.awan3 = this.add.image(300, 70, 'awan');
@@ -32,8 +31,6 @@ export default class GameScene extends Phaser.Scene {
     this.tanah.create(80, 350, 'tanah');
     this.tanah.create(300, 290, 'tanah');
     this.tanah.create(500, 250, 'tanah');
-    this.scoreText = this.add.text(20, 20, 'Score: 0', {fontSize: '28px'});
-    this.scoreText.setScrollFactor(0);
     this.koin = this.physics.add.image(50, 280, 'koin');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
@@ -106,10 +103,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   ambilKoin(player, koin){
-    this.score += 100;
+    evn.emit("ADD-SCORE");
     this.suaraKoin.play();
     koin.destroy();
-    this.scoreText.setText(`Score: ${this.score}`);
   }
 
   update(){

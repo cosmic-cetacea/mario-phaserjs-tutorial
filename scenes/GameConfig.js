@@ -1,5 +1,6 @@
 import GameScene from "./GameScene";
 import PauseMenuHandler from "./PauseMenuHandler";
+import ScoreScene from "./ScoreScene";
 // import Phaser from "phaser";
 
 export default {
@@ -14,10 +15,10 @@ export default {
 		}
 	},
 	title: "PhaserJS Super Mario Clone By Cosmic Cetacea / Pratama",
-	scene: [GameScene , PauseMenuHandler],
+	scene: [GameScene , PauseMenuHandler, ScoreScene],
   pixelArt: true,
-  // scale: {
-  //   mode: Phaser.Scale.ScaleModes.FIT,
-  //   autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
-  // },
+  scale: {
+    mode: Phaser.Scale.ScaleModes.FIT,
+    autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
+  },
 };

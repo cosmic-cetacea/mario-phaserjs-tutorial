@@ -1,6 +1,6 @@
 import GameScene from "./GameScene";
 import PauseMenuHandler from "./PauseMenuHandler";
-import Phaser from "phaser";
+// import Phaser from "phaser";
 
 export default {
 	width: 640,
@@ -13,7 +13,7 @@ export default {
 			debug: false
 		}
 	},
-	title: "Super Mario pakai phaserjs",
+	title: "PhaserJS Super Mario Clone By Cosmic Cetacea / Pratama",
 	scene: [GameScene , PauseMenuHandler],
   pixelArt: true,
   // scale: {

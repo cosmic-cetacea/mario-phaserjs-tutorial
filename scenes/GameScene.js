@@ -88,12 +88,14 @@ export default class GameScene extends Phaser.Scene {
     
   }
 
-  pauseGame(){
+  pauseGame(pausedText){
     if (this.scene.isPaused()) {
       this.scene.resume();
+      pausedText.setVisible(false);
     }
     else {
       this.scene.pause();
+      pausedText.setVisible(true);
     }
   }
 

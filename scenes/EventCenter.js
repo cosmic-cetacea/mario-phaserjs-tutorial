@@ -1,5 +1,5 @@
 import Phaser from "phaser";
 
-let ee = new Phaser.Events.EventEmitter();
+let evn = new Phaser.Events.EventEmitter();
 
-export default ee;
+export default evn;

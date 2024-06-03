@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import ee from './EventCenter';
+import evn from './EventCenter';
 import awan from '/assets/cloud.png';
 import mario from '/assets/mario_spritesheet.png';
 import tanah from '/assets/ground-long.png';
@@ -78,13 +78,14 @@ export default class GameScene extends Phaser.Scene {
 
     this.keyboard = this.input.keyboard.createCursorKeys();
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setLerp(0.1, 0.1);
 
 
     this.physics.add.collider(this.player, this.tanah);
     this.physics.add.collider(this.koin, this.tanah);
     this.physics.add.overlap(this.player, this.koin, this.ambilKoin, null, this);
 
-    ee.on("PAUSE", this.pauseGame, this);
+    evn.on("PAUSE", this.pauseGame, this);
     
   }
 

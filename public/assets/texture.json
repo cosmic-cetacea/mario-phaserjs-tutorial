@@ -1,229 +1,92 @@
+{"frames": {
+
+"cloud.png":
 {
-	"textures": [
-		{
-			"image": "texture",
-			"format": "RGBA8888",
-			"size": {
-				"w": 425,
-				"h": 428
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "kenney_mini.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 395,
-						"h": 395
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 1,
-						"w": 393,
-						"h": 393
-					},
-					"frame": {
-						"x": 0,
-						"y": 0,
-						"w": 393,
-						"h": 393
-					}
-				},
-				{
-					"filename": "mario_spritesheet.png",
-					"rotated": true,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 384,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 384,
-						"h": 32
-					},
-					"frame": {
-						"x": 393,
-						"y": 0,
-						"w": 384,
-						"h": 32
-					}
-				},
-				{
-					"filename": "ground-long.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 160,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 160,
-						"h": 16
-					},
-					"frame": {
-						"x": 0,
-						"y": 393,
-						"w": 160,
-						"h": 16
-					}
-				},
-				{
-					"filename": "platform-short.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 80,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 80,
-						"h": 16
-					},
-					"frame": {
-						"x": 160,
-						"y": 393,
-						"w": 80,
-						"h": 16
-					}
-				},
-				{
-					"filename": "hill.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 13,
-						"w": 48,
-						"h": 19
-					},
-					"frame": {
-						"x": 0,
-						"y": 409,
-						"w": 48,
-						"h": 19
-					}
-				},
-				{
-					"filename": "cloud.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 0,
-						"w": 32,
-						"h": 24
-					},
-					"frame": {
-						"x": 393,
-						"y": 384,
-						"w": 32,
-						"h": 24
-					}
-				},
-				{
-					"filename": "pipe.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 32,
-						"h": 32
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 32,
-						"h": 32
-					},
-					"frame": {
-						"x": 240,
-						"y": 393,
-						"w": 32,
-						"h": 32
-					}
-				},
-				{
-					"filename": "ground.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 48,
-						"y": 409,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
-					"filename": "platform.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 16,
-						"h": 16
-					},
-					"frame": {
-						"x": 64,
-						"y": 409,
-						"w": 16,
-						"h": 16
-					}
-				},
-				{
-					"filename": "coin.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 16,
-						"h": 16
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 2,
-						"w": 10,
-						"h": 14
-					},
-					"frame": {
-						"x": 80,
-						"y": 409,
-						"w": 10,
-						"h": 14
-					}
-				}
-			]
-		}
-	],
-	"meta": {
-		"app": "http://free-tex-packer.com",
-		"version": "0.6.7"
-	}
+	"frame": {"x":80,"y":0,"w":48,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
+	"sourceSize": {"w":48,"h":32}
+},
+"coin.png":
+{
+	"frame": {"x":0,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+"ground-long.png":
+{
+	"frame": {"x":256,"y":0,"w":160,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":16},
+	"sourceSize": {"w":160,"h":16}
+},
+"ground.png":
+{
+	"frame": {"x":16,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
+"hill.png":
+{
+	"frame": {"x":128,"y":0,"w":48,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
+	"sourceSize": {"w":48,"h":32}
+},
+"kenney_mini.png":
+{
+	"frame": {"x":0,"y":64,"w":395,"h":395},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":395,"h":395},
+	"sourceSize": {"w":395,"h":395}
+},
+"mario_spritesheet.png":
+{
+	"frame": {"x":0,"y":32,"w":384,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":32},
+	"sourceSize": {"w":384,"h":32}
+},
+"pipe.png":
+{
+	"frame": {"x":48,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"platform-short.png":
+{
+	"frame": {"x":176,"y":0,"w":80,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":16},
+	"sourceSize": {"w":80,"h":16}
+},
+"platform.png":
+{
+	"frame": {"x":32,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "texture.png",
+	"format": "RGBA8888",
+	"size": {"w":416,"h":459},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a5f926c30058a6eb3a1e866be1cebae3:720586478d98ba1239c16297e78d6052:88db1022cd6b660616541d2788fcd4f7$"
+}
 }

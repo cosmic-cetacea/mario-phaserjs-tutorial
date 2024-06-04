@@ -9,7 +9,8 @@ export default class PauseMenuHandler extends Phaser.Scene {
   }
 
   create(){
-    this.pausedText = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 4, "kenney-mini", "Game Paused", 36);
+    Phaser.GameObjects.BitmapText.ParseFromAtlas(this, 'kenney-font', 'atlas', 'kenney_mini.png', 'kenney-mini');
+    this.pausedText = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 4, "kenney-font", "Game Paused", 36);
     this.pausedText.setTintFill(0xFBF9F1);
     this.pausedText.setOrigin(0.5);
     this.pausedText.setVisible(false);

@@ -7,16 +7,18 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create(){
-    this.awan1 = this.add.image(100, 100, 'awan');
-    this.awan2 = this.add.image(200, 50, 'awan');
-    this.awan3 = this.add.image(300, 70, 'awan');
-    this.awan4 = this.add.image(400, 100, 'awan');
+    const atlas = this.textures.get('atlas');
+    const frames = atlas.getFrameNames();
+    this.awan1 = this.add.image(100, 100, 'atlas', frames[5]);
+    this.awan2 = this.add.image(200, 50, 'atlas', frames[5]);
+    this.awan3 = this.add.image(300, 70, 'atlas', frames[5]);
+    this.awan4 = this.add.image(400, 100, 'atlas', frames[5]);
 
     this.tanah = this.physics.add.staticGroup();
-    this.tanah.create(80, 350, 'tanah');
-    this.tanah.create(300, 290, 'tanah');
-    this.tanah.create(500, 250, 'tanah');
-    this.koin = this.physics.add.image(50, 280, 'koin');
+    this.tanah.create(80, 350, 'atlas', frames[2]);
+    this.tanah.create(300, 290, 'atlas', frames[2]);
+    this.tanah.create(500, 250, 'atlas', frames[2]);
+    this.koin = this.physics.add.image(50, 280, 'atlas', frames[9]);
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
 

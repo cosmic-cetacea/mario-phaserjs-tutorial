@@ -1,0 +1,229 @@
+{
+	"textures": [
+		{
+			"image": "texture",
+			"format": "RGBA8888",
+			"size": {
+				"w": 425,
+				"h": 428
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "kenney_mini.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 395,
+						"h": 395
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 393,
+						"h": 393
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 393,
+						"h": 393
+					}
+				},
+				{
+					"filename": "mario_spritesheet.png",
+					"rotated": true,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 384,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 384,
+						"h": 32
+					},
+					"frame": {
+						"x": 393,
+						"y": 0,
+						"w": 384,
+						"h": 32
+					}
+				},
+				{
+					"filename": "ground-long.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 16
+					},
+					"frame": {
+						"x": 0,
+						"y": 393,
+						"w": 160,
+						"h": 16
+					}
+				},
+				{
+					"filename": "platform-short.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 80,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 80,
+						"h": 16
+					},
+					"frame": {
+						"x": 160,
+						"y": 393,
+						"w": 80,
+						"h": 16
+					}
+				},
+				{
+					"filename": "hill.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 13,
+						"w": 48,
+						"h": 19
+					},
+					"frame": {
+						"x": 0,
+						"y": 409,
+						"w": 48,
+						"h": 19
+					}
+				},
+				{
+					"filename": "cloud.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 0,
+						"w": 32,
+						"h": 24
+					},
+					"frame": {
+						"x": 393,
+						"y": 384,
+						"w": 32,
+						"h": 24
+					}
+				},
+				{
+					"filename": "pipe.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 240,
+						"y": 393,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "ground.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 48,
+						"y": 409,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "platform.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 64,
+						"y": 409,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "coin.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 2,
+						"w": 10,
+						"h": 14
+					},
+					"frame": {
+						"x": 80,
+						"y": 409,
+						"w": 10,
+						"h": 14
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}

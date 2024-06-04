@@ -9,8 +9,8 @@ export default class PauseMenuHandler extends Phaser.Scene {
   }
 
   create(){
-    this.pausedText = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 2, "kenney-mini", "Game Paused", 32);
-    this.pausedText.setTintFill(0xffffff);
+    this.pausedText = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 4, "kenney-mini", "Game Paused", 36);
+    this.pausedText.setTintFill(0xFBF9F1);
     this.pausedText.setOrigin(0.5);
     this.pausedText.setVisible(false);
     this.escapeKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);

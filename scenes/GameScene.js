@@ -47,14 +47,14 @@ export default class GameScene extends Phaser.Scene {
 
     this.anims.create({
       key: 'lompat-kanan',
-      frames: [{key: 'mario', frame: 11}],
+      frames: [{key: 'mario', frame: 6}],
       frameRate: 10,
     });
 
 
     this.anims.create({
       key: 'lompat-kiri',
-      frames: [{key: 'mario', frame: 12}],
+      frames: [{key: 'mario', frame: 17}],
       frameRate: 10,
     });
 
@@ -72,7 +72,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.tanah);
     this.physics.add.collider(this.koin, this.tanah);
-    this.physics.add.overlap(this.player, this.koin, this.ambilKoin, null, this);
+    this.physics.add.overlap(this.player, this.koin, this.getCoin, null, this);
 
     evn.on("PAUSE", this.pauseGame, this);
     
@@ -91,13 +91,17 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  ambilKoin(player, koin){
+  getCoin(player, koin){
     evn.emit("ADD-SCORE");
     this.suaraKoin.play();
     koin.destroy();
   }
 
   update(){
+    this.controlHandler();
+  }
+
+  controlHandler(){
     if (this.keyboard.right.isDown){
       this.player.anims.play('kanan', true);
       this.player.setVelocityX(100);
@@ -107,25 +111,26 @@ export default class GameScene extends Phaser.Scene {
       this.player.setVelocityX(-100);
     }
     else {
-      if (this.player.body.facing == 14){
-        this.player.anims.play('stop-kanan');
-        this.player.setVelocityX(0);
-      }
-      else if (this.player.body.facing == 13){
+      var deltaX = this.player.body.deltaX();
+      this.player.setVelocityX(0);
+      if (deltaX < 0) {
         this.player.anims.play('stop-kiri');
-        this.player.setVelocityX(0);
+      }
+      else if (deltaX > 0) {
+        this.player.anims.play('stop-kanan');
       }
     }
 
     if (this.keyboard.up.isDown && this.player.body.touching.down){
       this.player.setVelocityY(-200);
     }
-
-    if (!this.player.body.touching.down && this.keyboard.right.isDown){
-      this.player.anims.play('lompat-kanan');
-    }
-    if (!this.player.body.touching.down && this.keyboard.left.isDown){
-      this.player.anims.play('lompat-kiri');
+    if (!this.player.body.touching.down){
+      if (this.keyboard.right.isDown ){
+        this.player.anims.play('lompat-kanan');
+      }
+      else if (this.keyboard.left.isDown) {
+        this.player.anims.play('lompat-kiri');
+      }
     }
 
   }

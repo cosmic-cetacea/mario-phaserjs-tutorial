@@ -20,6 +20,8 @@ export default class GameScene extends Phaser.Scene {
     this.tanah.create(80, 350, 'atlas', tanah);
     this.tanah.create(300, 290, 'atlas', tanah);
     this.tanah.create(500, 250, 'atlas', tanah);
+    this.special_platform = this.physics.add.staticImage(100, 300, 'atlas', 'platform.png');
+    // this.special_platform.body.allowGravity = false;
     this.koin = this.physics.add.image(50, 280, 'atlas', koin);
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
@@ -73,6 +75,7 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.tanah);
     this.physics.add.collider(this.koin, this.tanah);
     this.physics.add.overlap(this.player, this.koin, this.getCoin, null, this);
+    this.platcol = this.physics.add.collider(this.player, this.special_platform);
 
     evn.on("PAUSE", this.pauseGame, this);
     
@@ -99,6 +102,11 @@ export default class GameScene extends Phaser.Scene {
 
   update(){
     this.controlHandler();
+    if (this.special_platform.y < this.player.y){
+      this.platcol.active = false;
+    } else {
+      this.platcol.active = true;
+    }
   }
 
   controlHandler(){

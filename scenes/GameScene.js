@@ -7,6 +7,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create(){
+    const map = this.make.tilemap({key: 'level00'});
+    const tiles = map.addTilesetImage('tile_map', 'tiles');
+    const layer = map.createLayer(0, tiles, 0, 0);
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario_spritesheet.png', frameWidth: 16, frameHeight: 32});
     const awan = "cloud.png";
     const tanah = "ground-long.png";
@@ -39,7 +42,6 @@ export default class GameScene extends Phaser.Scene {
       frames: [{key: 'mario', frame: 0}],
       frameRate: 10,
     });
-
     
     this.anims.create({
       key: 'stop-kiri',
@@ -68,6 +70,9 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.keyboard = this.input.keyboard.createCursorKeys();
+    console.log(map.widthInPixels);
+    console.log(map.heightInPixels);
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.player);
     this.cameras.main.setLerp(0.1, 0.1);
 

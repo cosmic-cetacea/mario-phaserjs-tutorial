@@ -10,6 +10,7 @@ export default class GameScene extends Phaser.Scene {
     const map = this.make.tilemap({key: 'level00'});
     const tiles = map.addTilesetImage('tile_map', 'tiles');
     const layer = map.createLayer(0, tiles, 0, 0);
+    map.setCollisionByProperty({collides: true});
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario_spritesheet.png', frameWidth: 16, frameHeight: 32});
     const awan = "cloud.png";
     const tanah = "ground-long.png";
@@ -70,14 +71,13 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.keyboard = this.input.keyboard.createCursorKeys();
-    console.log(map.widthInPixels);
-    console.log(map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.player);
     this.cameras.main.setLerp(0.1, 0.1);
 
 
     this.physics.add.collider(this.player, this.tanah);
+    this.physics.add.collider(this.player, layer);
     this.physics.add.collider(this.koin, this.tanah);
     this.physics.add.overlap(this.player, this.koin, this.getCoin, null, this);
     this.platcol = this.physics.add.collider(this.player, this.special_platform);
@@ -134,7 +134,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }
 
-    if (this.keyboard.up.isDown && this.player.body.touching.down){
+    if (this.keyboard.up.isDown && this.player.body.blocked.down){
       this.player.setVelocityY(-200);
     }
     if (!this.player.body.touching.down){

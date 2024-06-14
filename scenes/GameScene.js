@@ -137,7 +137,7 @@ export default class GameScene extends Phaser.Scene {
     if (this.keyboard.up.isDown && this.player.body.blocked.down){
       this.player.setVelocityY(-200);
     }
-    if (!this.player.body.touching.down){
+    if (!this.player.body.blocked.down){
       if (this.keyboard.right.isDown ){
         this.player.anims.play('lompat-kanan');
       }

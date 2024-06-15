@@ -12,21 +12,9 @@ export default class GameScene extends Phaser.Scene {
     const layer = map.createLayer(0, tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario_spritesheet.png', frameWidth: 16, frameHeight: 32});
-    const awan = "cloud.png";
-    const tanah = "ground-long.png";
-    const koin = "coin.png";
-    this.awan1 = this.add.image(100, 100, 'atlas', awan);
-    this.awan2 = this.add.image(200, 50, 'atlas', awan);
-    this.awan3 = this.add.image(300, 70, 'atlas', awan);
-    this.awan4 = this.add.image(400, 100, 'atlas', awan);
 
-    this.tanah = this.physics.add.staticGroup();
-    this.tanah.create(80, 350, 'atlas', tanah);
-    this.tanah.create(300, 290, 'atlas', tanah);
-    this.tanah.create(500, 250, 'atlas', tanah);
-    this.special_platform = this.physics.add.staticImage(100, 300, 'atlas', 'platform.png');
     // this.special_platform.body.allowGravity = false;
-    this.koin = this.physics.add.image(50, 280, 'atlas', koin);
+    this.koin = this.physics.add.image(100, 80, 'atlas', 'coin.png');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
 
@@ -76,11 +64,9 @@ export default class GameScene extends Phaser.Scene {
     this.cameras.main.setLerp(0.1, 0.1);
 
 
-    this.physics.add.collider(this.player, this.tanah);
     this.physics.add.collider(this.player, layer);
-    this.physics.add.collider(this.koin, this.tanah);
+    this.physics.add.collider(this.koin, layer);
     this.physics.add.overlap(this.player, this.koin, this.getCoin, null, this);
-    this.platcol = this.physics.add.collider(this.player, this.special_platform);
 
     evn.on("PAUSE", this.pauseGame, this);
     
@@ -107,11 +93,11 @@ export default class GameScene extends Phaser.Scene {
 
   update(){
     this.controlHandler();
-    if (this.special_platform.y < this.player.y){
-      this.platcol.active = false;
-    } else {
-      this.platcol.active = true;
-    }
+  //   if (this.special_platform.y < this.player.y){
+  //     this.platcol.active = false;
+  //   } else {
+  //     this.platcol.active = true;
+  //   }
   }
 
   controlHandler(){

@@ -8,6 +8,7 @@ export default class GameScene extends Phaser.Scene {
 
   create(){
     const map = this.make.tilemap({key: 'world'});
+    console.log(map.heightInPixels);
     const tiles = map.addTilesetImage('env_tile', 'tiles');
     const water_layer = map.createLayer('water', tiles, 0, 0);
     const vegetation_layer = map.createLayer('vegetation', tiles, 0, 0);
@@ -21,9 +22,10 @@ export default class GameScene extends Phaser.Scene {
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
     this.suaraLompat = this.sound.add('jump-sound');
+    this.suaraMati = this.sound.add('die-sound');
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
-    this.mario = this.physics.add.sprite(150, 100, 'mario', 0);
+    this.mario = this.physics.add.sprite(640, 700, 'mario', 0);
     this.mario.body.setCollideWorldBounds(true);
     this.anims.create({
       key: 'kanan',
@@ -106,6 +108,7 @@ export default class GameScene extends Phaser.Scene {
 
   update(){
     this.controlHandler();
+    this.deathChecker();
     // if (this.spaceKey.isDown) {
     //   this.mario.body.velocity.x *= 1.8;
     // }
@@ -114,6 +117,14 @@ export default class GameScene extends Phaser.Scene {
   //   } else {
   //     this.platcol.active = true;
   //   }
+  }
+
+  deathChecker() {
+    if (this.mario.y > 1920) {
+      this.mario.destroy();
+      this.suaraMati.play();
+      this.scene.restart();
+    }
   }
 
   controlHandler(){

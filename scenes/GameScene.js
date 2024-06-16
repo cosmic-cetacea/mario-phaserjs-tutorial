@@ -32,15 +32,24 @@ export default class GameScene extends Phaser.Scene {
     this.suaraPause = this.sound.add('pause-sound');
     this.suaraLompat = this.sound.add('jump-sound');
     this.suaraMati = this.sound.add('die-sound');
-
+  
+    // Princess Peach
     this.peach = this.physics.add.sprite(600, 700, 'princess_peach', 0);
+    // Kirby
     this.kirby = this.physics.add.sprite(675, 700, 'kirby', 0);
+    // Donkey Kong
     this.donkeykong = this.physics.add.sprite(700, 700, 'donkeykong', 0);
-    this.boble = this.physics.add.sprite(725, 700, 'boble', 0);
+    // Bub from Bubble Bobble
+    this.bub = this.physics.add.sprite(725, 700, 'boble', 0);
+    // Popo from Ice Climbers
     this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
+    // Link from The Legend of Zelda
     this.link = this.physics.add.sprite(775, 700, 'link', 0);
+    // Luigi
     this.luigi = this.physics.add.sprite(800, 700, 'luigi', 0);
+    // Mega Man
     this.megaman = this.physics.add.sprite(825, 700, 'megaman', 0);
+    // Toad
     this.toad = this.physics.add.sprite(850, 700, 'toad', 0);
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
@@ -102,7 +111,7 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.peach, platform_layer);
     this.physics.add.collider(this.kirby, platform_layer);
     this.physics.add.collider(this.donkeykong, platform_layer);
-    this.physics.add.collider(this.boble, platform_layer);
+    this.physics.add.collider(this.bub, platform_layer);
     this.physics.add.collider(this.ice_climber, platform_layer);
     this.physics.add.collider(this.link, platform_layer);
     this.physics.add.collider(this.luigi, platform_layer);

@@ -38,7 +38,7 @@ export default class GameScene extends Phaser.Scene {
     // Kirby
     this.kirby = this.physics.add.sprite(675, 700, 'kirby', 0);
     // Donkey Kong
-    this.donkeykong = this.physics.add.sprite(700, 700, 'donkeykong', 0);
+    this.donkeykong = this.physics.add.sprite(40, 1184, 'donkeykong', 0);
     // Bub from Bubble Bobble
     this.bub = this.physics.add.sprite(725, 700, 'boble', 0);
     // Popo from Ice Climbers
@@ -55,6 +55,16 @@ export default class GameScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
     this.mario = this.physics.add.sprite(640, 700, 'mario', 0);
     this.mario.body.setCollideWorldBounds(true);
+
+    this.anims.create({
+      key: 'idle-donkeykong',
+      frames: this.anims.generateFrameNumbers('donkeykong', {start: 0, end: 2}),
+      repeat: -1,
+      frameRate: 4,
+    });
+    this.donkeykong.anims.play('idle-donkeykong');
+
+
     this.anims.create({
       key: 'kanan',
       frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),
@@ -148,6 +158,7 @@ export default class GameScene extends Phaser.Scene {
   update(){
     this.controlHandler();
     this.deathChecker();
+    console.log(this.mario.x, this.mario.y);
     // if (this.spaceKey.isDown) {
     //   this.mario.body.velocity.x *= 1.8;
     // }

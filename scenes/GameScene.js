@@ -27,7 +27,6 @@ export default class GameScene extends Phaser.Scene {
     this.textures.addSpriteSheetFromAtlas('toad', {atlas: 'atlas', frame: 'toad.png', frameWidth: 16, frameHeight: 24});
     
     this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    // this.special_platform.body.allowGravity = false;
     this.koin = this.physics.add.image(100, 80, 'atlas', 'kirby.png');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');

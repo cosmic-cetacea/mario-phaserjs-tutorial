@@ -7,7 +7,7 @@ import ScoreScene from "./ScoreScene";
 export default {
 	width: 640,
 	height: 360,
-  backgroundColor: '#6AD4DD',
+  backgroundColor: '#5c94fc',
 	physics: {
 		default: 'arcade',
 		arcade: {

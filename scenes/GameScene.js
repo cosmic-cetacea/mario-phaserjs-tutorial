@@ -14,7 +14,17 @@ export default class GameScene extends Phaser.Scene {
     const vegetation_layer = map.createLayer('vegetation', tiles, 0, 0);
     const platform_layer = map.createLayer('platform', tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
+
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario.png', frameWidth: 16, frameHeight: 32});
+    this.textures.addSpriteSheetFromAtlas('princess_peach', {atlas: 'atlas', frame: 'peach.png', frameWidth: 16, frameHeight: 24});
+    this.textures.addSpriteSheetFromAtlas('kirby', {atlas: 'atlas', frame: 'kirby.png', frameWidth: 16, frameHeight: 16});
+    this.textures.addSpriteSheetFromAtlas('donkeykong', {atlas: 'atlas', frame: 'donkeykong.png', frameWidth: 48, frameHeight: 32});
+    this.textures.addSpriteSheetFromAtlas('boble', {atlas: 'atlas', frame: 'boble.png', frameWidth: 16, frameHeight: 16});
+    this.textures.addSpriteSheetFromAtlas('ice_climber', {atlas: 'atlas', frame: 'iceclimber.png', frameWidth: 16, frameHeight: 24});
+    this.textures.addSpriteSheetFromAtlas('link', {atlas: 'atlas', frame: 'link.png', frameWidth: 16, frameHeight: 16});
+    this.textures.addSpriteSheetFromAtlas('luigi', {atlas: 'atlas', frame: 'luigi.png', frameWidth: 16, frameHeight: 32});
+    this.textures.addSpriteSheetFromAtlas('megaman', {atlas: 'atlas', frame: 'megaman.png', frameWidth: 24, frameHeight: 24});
+    this.textures.addSpriteSheetFromAtlas('toad', {atlas: 'atlas', frame: 'toad.png', frameWidth: 16, frameHeight: 24});
     
     this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     // this.special_platform.body.allowGravity = false;
@@ -23,6 +33,16 @@ export default class GameScene extends Phaser.Scene {
     this.suaraPause = this.sound.add('pause-sound');
     this.suaraLompat = this.sound.add('jump-sound');
     this.suaraMati = this.sound.add('die-sound');
+
+    this.peach = this.physics.add.sprite(600, 700, 'princess_peach', 0);
+    this.kirby = this.physics.add.sprite(675, 700, 'kirby', 0);
+    this.donkeykong = this.physics.add.sprite(700, 700, 'donkeykong', 0);
+    this.boble = this.physics.add.sprite(725, 700, 'boble', 0);
+    this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
+    this.link = this.physics.add.sprite(775, 700, 'link', 0);
+    this.luigi = this.physics.add.sprite(800, 700, 'luigi', 0);
+    this.megaman = this.physics.add.sprite(825, 700, 'megaman', 0);
+    this.toad = this.physics.add.sprite(850, 700, 'toad', 0);
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
     this.mario = this.physics.add.sprite(640, 700, 'mario', 0);
@@ -80,6 +100,17 @@ export default class GameScene extends Phaser.Scene {
 
 
     this.physics.add.collider(this.mario, platform_layer);
+    this.physics.add.collider(this.peach, platform_layer);
+    this.physics.add.collider(this.kirby, platform_layer);
+    this.physics.add.collider(this.donkeykong, platform_layer);
+    this.physics.add.collider(this.boble, platform_layer);
+    this.physics.add.collider(this.ice_climber, platform_layer);
+    this.physics.add.collider(this.link, platform_layer);
+    this.physics.add.collider(this.luigi, platform_layer);
+    this.physics.add.collider(this.megaman, platform_layer);
+    this.physics.add.collider(this.toad, platform_layer);
+
+
     this.physics.add.collider(this.koin, platform_layer);
     this.physics.add.overlap(this.mario, this.koin, this.getCoin, null, this);
 

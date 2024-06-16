@@ -40,7 +40,7 @@ export default class GameScene extends Phaser.Scene {
     // Donkey Kong
     this.donkeykong = this.physics.add.sprite(40, 1184, 'donkeykong', 0);
     // Bub from Bubble Bobble
-    this.bub = this.physics.add.sprite(675, 700, 'boble', 0);
+    this.bub = this.physics.add.sprite(1080, 1264, 'boble', 0);
     // Popo from Ice Climbers
     this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
     // Link from The Legend of Zelda

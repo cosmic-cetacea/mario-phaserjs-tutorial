@@ -14,11 +14,11 @@ export default class GameScene extends Phaser.Scene {
     const vegetation_layer = map.createLayer('vegetation', tiles, 0, 0);
     const platform_layer = map.createLayer('platform', tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
-    this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario_spritesheet.png', frameWidth: 16, frameHeight: 32});
+    this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario.png', frameWidth: 16, frameHeight: 32});
     
     this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     // this.special_platform.body.allowGravity = false;
-    this.koin = this.physics.add.image(100, 80, 'atlas', 'coin.png');
+    this.koin = this.physics.add.image(100, 80, 'atlas', 'kirby.png');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
     this.suaraLompat = this.sound.add('jump-sound');

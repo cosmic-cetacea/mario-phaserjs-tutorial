@@ -4,8 +4,8 @@ import tring from '/assets/smb_coin.wav';
 import pauseSound from '/assets/smb_pause.wav';
 import jumpSound from '/assets/smb_jump-small.wav';
 import dieSound from '/assets/smb_mariodie.wav';
-import atlasPng from "/assets/texture.png";
-import atlasJson from "/assets/texture.json?url";
+import atlasPng from "/assets/char_sprites.png";
+import atlasJson from "/assets/char_sprites.json?url";
 import tileSet from "/assets/env_tile.png";
 import world from "/assets/world.json?url";
 

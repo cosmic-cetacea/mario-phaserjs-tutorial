@@ -7,9 +7,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create(){
-    const map = this.make.tilemap({key: 'level00'});
-    const tiles = map.addTilesetImage('tile_map', 'tiles');
-    const layer = map.createLayer(0, tiles, 0, 0);
+    const map = this.make.tilemap({key: 'world'});
+    const tiles = map.addTilesetImage('env_tile', 'tiles');
+    const water_layer = map.createLayer('water', tiles, 0, 0);
+    const vegetation_layer = map.createLayer('vegetation', tiles, 0, 0);
+    const platform_layer = map.createLayer('platform', tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario_spritesheet.png', frameWidth: 16, frameHeight: 32});
     
@@ -19,7 +21,7 @@ export default class GameScene extends Phaser.Scene {
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
 
-    this.player = this.physics.add.sprite(150, 100, 'mario', 0);
+    this.mario = this.physics.add.sprite(150, 100, 'mario', 0);
     this.anims.create({
       key: 'kanan',
       frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),
@@ -68,13 +70,13 @@ export default class GameScene extends Phaser.Scene {
 
     this.keyboard = this.input.keyboard.createCursorKeys();
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    this.cameras.main.startFollow(this.player);
+    this.cameras.main.startFollow(this.mario);
     this.cameras.main.setLerp(0.1, 0.1);
 
 
-    this.physics.add.collider(this.player, layer);
-    this.physics.add.collider(this.koin, layer);
-    this.physics.add.overlap(this.player, this.koin, this.getCoin, null, this);
+    this.physics.add.collider(this.mario, platform_layer);
+    this.physics.add.collider(this.koin, platform_layer);
+    this.physics.add.overlap(this.mario, this.koin, this.getCoin, null, this);
 
     evn.on("PAUSE", this.pauseGame, this);
     
@@ -93,7 +95,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  getCoin(player, koin){
+  getCoin(pplatform_layer, koin){
     evn.emit("ADD-SCORE");
     this.suaraKoin.play();
     koin.destroy();
@@ -102,9 +104,9 @@ export default class GameScene extends Phaser.Scene {
   update(){
     this.controlHandler();
     // if (this.spaceKey.isDown) {
-    //   this.player.body.velocity.x *= 1.8;
+    //   this.mario.body.velocity.x *= 1.8;
     // }
-  //   if (this.special_platform.y < this.player.y){
+  //   if (this.special_platform.y < this.mario.y){
   //     this.platcol.active = false;
   //   } else {
   //     this.platcol.active = true;
@@ -113,41 +115,41 @@ export default class GameScene extends Phaser.Scene {
 
   controlHandler(){
     if (this.keyboard.right.isDown){
-      this.player.anims.play('kanan', true);
-      this.player.setVelocityX(100);
+      this.mario.anims.play('kanan', true);
+      this.mario.setVelocityX(100);
       if (this.spaceKey.isDown) {
-        this.player.body.velocity.x *= 2;
-        this.player.anims.play({key: 'kanan', frameRate: 20}, true);
+        this.mario.body.velocity.x *= 2;
+        this.mario.anims.play({key: 'kanan', frameRate: 20}, true);
       }
     }
     else if (this.keyboard.left.isDown){
-      this.player.anims.play('kiri', true);
-      this.player.setVelocityX(-100);
+      this.mario.anims.play('kiri', true);
+      this.mario.setVelocityX(-100);
       if (this.spaceKey.isDown) {
-        this.player.body.velocity.x *= 2;
-        this.player.anims.play({key: 'kiri', frameRate: 20}, true);
+        this.mario.body.velocity.x *= 2;
+        this.mario.anims.play({key: 'kiri', frameRate: 20}, true);
       }
     }
     else {
-      var deltaX = this.player.body.deltaX();
-      this.player.setVelocityX(0);
+      var deltaX = this.mario.body.deltaX();
+      this.mario.setVelocityX(0);
       if (deltaX < 0) {
-        this.player.anims.play('stop-kiri');
+        this.mario.anims.play('stop-kiri');
       }
       else if (deltaX > 0) {
-        this.player.anims.play('stop-kanan');
+        this.mario.anims.play('stop-kanan');
       }
     }
 
-    if (this.keyboard.up.isDown && this.player.body.blocked.down){
-      this.player.setVelocityY(-200);
+    if (this.keyboard.up.isDown && this.mario.body.blocked.down){
+      this.mario.setVelocityY(-200);
     }
-    if (!this.player.body.blocked.down){
+    if (!this.mario.body.blocked.down){
       if (this.keyboard.right.isDown ){
-        this.player.anims.play('lompat-kanan');
+        this.mario.anims.play('lompat-kanan');
       }
       else if (this.keyboard.left.isDown) {
-        this.player.anims.play('lompat-kiri');
+        this.mario.anims.play('lompat-kiri');
       }
     }
 

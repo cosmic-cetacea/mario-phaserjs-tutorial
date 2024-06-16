@@ -4,8 +4,8 @@ import tring from '/assets/smb_coin.wav';
 import pauseSound from '/assets/smb_pause.wav';
 import atlasPng from "/assets/texture.png";
 import atlasJson from "/assets/texture.json?url";
-import tileSet from "/assets/tile_map.png";
-import level00 from "/assets/level00.json?url";
+import tileSet from "/assets/env_tile.png";
+import world from "/assets/world.json?url";
 
 
 export default class Preload extends Phaser.Scene {
@@ -21,7 +21,7 @@ export default class Preload extends Phaser.Scene {
     this.load.audio('pause-sound', pauseSound);
     this.load.xml('kenney-mini', kenney_mini_xml);
     this.load.image('tiles', tileSet);
-    this.load.tilemapTiledJSON('level00', level00);
+    this.load.tilemapTiledJSON('world', world);
   }
 
   create(){

@@ -20,6 +20,7 @@ export default class GameScene extends Phaser.Scene {
     this.koin = this.physics.add.image(100, 80, 'atlas', 'coin.png');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
+    this.suaraLompat = this.sound.add('jump-sound');
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
     this.mario = this.physics.add.sprite(150, 100, 'mario', 0);
@@ -145,6 +146,7 @@ export default class GameScene extends Phaser.Scene {
 
     if (this.keyboard.up.isDown && this.mario.body.blocked.down){
       this.mario.setVelocityY(-200);
+      this.suaraLompat.play();
     }
     if (!this.mario.body.blocked.down){
       if (this.keyboard.right.isDown ){

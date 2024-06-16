@@ -21,7 +21,9 @@ export default class GameScene extends Phaser.Scene {
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
 
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
     this.mario = this.physics.add.sprite(150, 100, 'mario', 0);
+    this.mario.body.setCollideWorldBounds(true);
     this.anims.create({
       key: 'kanan',
       frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),

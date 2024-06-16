@@ -12,7 +12,8 @@ export default class GameScene extends Phaser.Scene {
     const layer = map.createLayer(0, tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario_spritesheet.png', frameWidth: 16, frameHeight: 32});
-
+    
+    this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     // this.special_platform.body.allowGravity = false;
     this.koin = this.physics.add.image(100, 80, 'atlas', 'coin.png');
     this.suaraKoin = this.sound.add('tring');
@@ -24,6 +25,13 @@ export default class GameScene extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),
       repeat: -1,
       frameRate: 10,
+    });
+
+    this.anims.create({
+      key: 'kanan-fast',
+      frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),
+      repeat: -1,
+      frameRate: 20,
     });
 
     this.anims.create({
@@ -93,6 +101,9 @@ export default class GameScene extends Phaser.Scene {
 
   update(){
     this.controlHandler();
+    // if (this.spaceKey.isDown) {
+    //   this.player.body.velocity.x *= 1.8;
+    // }
   //   if (this.special_platform.y < this.player.y){
   //     this.platcol.active = false;
   //   } else {
@@ -104,10 +115,18 @@ export default class GameScene extends Phaser.Scene {
     if (this.keyboard.right.isDown){
       this.player.anims.play('kanan', true);
       this.player.setVelocityX(100);
+      if (this.spaceKey.isDown) {
+        this.player.body.velocity.x *= 2;
+        this.player.anims.play({key: 'kanan', frameRate: 20}, true);
+      }
     }
     else if (this.keyboard.left.isDown){
       this.player.anims.play('kiri', true);
       this.player.setVelocityX(-100);
+      if (this.spaceKey.isDown) {
+        this.player.body.velocity.x *= 2;
+        this.player.anims.play({key: 'kiri', frameRate: 20}, true);
+      }
     }
     else {
       var deltaX = this.player.body.deltaX();

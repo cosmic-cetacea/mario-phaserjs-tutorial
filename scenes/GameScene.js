@@ -11,7 +11,7 @@ export default class GameScene extends Phaser.Scene {
     console.log(map.heightInPixels);
     const tiles = map.addTilesetImage('env_tile', 'tiles');
     const water_layer = map.createLayer('water', tiles, 0, 0);
-    const vegetation_layer = map.createLayer('vegetation', tiles, 0, 0);
+    const vegetation_layer = map.createLayer('vegetation-bg', tiles, 0, 0);
     const platform_layer = map.createLayer('platform', tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
 
@@ -36,11 +36,11 @@ export default class GameScene extends Phaser.Scene {
     // Princess Peach
     this.peach = this.physics.add.sprite(600, 700, 'princess_peach', 0);
     // Kirby
-    this.kirby = this.physics.add.sprite(675, 700, 'kirby', 0);
+    this.kirby = this.physics.add.sprite(633, 832, 'kirby', 0);
     // Donkey Kong
     this.donkeykong = this.physics.add.sprite(40, 1184, 'donkeykong', 0);
     // Bub from Bubble Bobble
-    this.bub = this.physics.add.sprite(725, 700, 'boble', 0);
+    this.bub = this.physics.add.sprite(675, 700, 'boble', 0);
     // Popo from Ice Climbers
     this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
     // Link from The Legend of Zelda
@@ -64,6 +64,22 @@ export default class GameScene extends Phaser.Scene {
     });
     this.donkeykong.anims.play('idle-donkeykong');
 
+    this.anims.create({
+      key: 'idle-bub',
+      frames: this.anims.generateFrameNumbers('boble', {start: 1, end: 3}),
+      repeat: -1,
+      frameRate: 4,
+    });
+    this.bub.anims.play('idle-bub');
+
+
+    this.anims.create({
+      key: 'idle-kirby',
+      frames: this.anims.generateFrameNumbers('kirby', {start: 0, end: 3}),
+      repeat: -1,
+      frameRate: 8,
+    });
+    this.kirby.anims.play('idle-kirby');
 
     this.anims.create({
       key: 'kanan',

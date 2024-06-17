@@ -10,7 +10,7 @@ export default class GameScene extends Phaser.Scene {
     const map = this.make.tilemap({key: 'world'});
     const tiles = map.addTilesetImage('env_tile', 'tiles');
     const water_layer = map.createLayer('water', tiles, 0, 0);
-    const vegetation_layer = map.createLayer('vegetation-bg', tiles, 0, 0);
+    const vegetation_layer = map.createLayer('vegetation-bg-building', tiles, 0, 0);
     const platform_layer = map.createLayer('platform', tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
     const objek_layer = map.getObjectLayer('objectpos')['objects'];
@@ -34,13 +34,12 @@ export default class GameScene extends Phaser.Scene {
     this.suaraMati = this.sound.add('die-sound');
   
     // Princess Peach
-    this.peach = this.physics.add.sprite(600, 700, 'princess_peach', 0);
+    this.peach = this.physics.add.sprite(objek_layer[4].x, objek_layer[4].y, 'princess_peach', 0);
     // Kirby
     this.kirby = this.physics.add.sprite(objek_layer[1].x, objek_layer[1].y, 'kirby', 0);
     // Donkey Kong
     this.donkeykong = this.physics.add.sprite(objek_layer[0].x, objek_layer[0].y, 'donkeykong', 0);
     // Bub from Bubble Bobble
-    console.log(objek_layer);
     this.bub = this.physics.add.sprite(objek_layer[2].x, objek_layer[2].y, 'boble', 0);
     // Popo from Ice Climbers
     this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
@@ -51,10 +50,10 @@ export default class GameScene extends Phaser.Scene {
     // Mega Man
     this.megaman = this.physics.add.sprite(825, 700, 'megaman', 0);
     // Toad
-    this.toad = this.physics.add.sprite(850, 700, 'toad', 0);
+    this.toad = this.physics.add.sprite(objek_layer[5].x, objek_layer[5].y, 'toad', 0);
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
-    this.mario = this.physics.add.sprite(640, 700, 'mario', 0);
+    this.mario = this.physics.add.sprite(objek_layer[3].x, objek_layer[3].y, 'mario', 0);
     this.mario.body.setCollideWorldBounds(true);
 
     this.anims.create({

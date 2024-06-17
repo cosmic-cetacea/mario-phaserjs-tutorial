@@ -8,12 +8,12 @@ export default class GameScene extends Phaser.Scene {
 
   create(){
     const map = this.make.tilemap({key: 'world'});
-    console.log(map.heightInPixels);
     const tiles = map.addTilesetImage('env_tile', 'tiles');
     const water_layer = map.createLayer('water', tiles, 0, 0);
     const vegetation_layer = map.createLayer('vegetation-bg', tiles, 0, 0);
     const platform_layer = map.createLayer('platform', tiles, 0, 0);
     map.setCollisionByProperty({collides: true});
+    const objek_layer = map.getObjectLayer('objectpos')['objects'];
 
     this.textures.addSpriteSheetFromAtlas('mario', {atlas: 'atlas', frame: 'mario.png', frameWidth: 16, frameHeight: 32});
     this.textures.addSpriteSheetFromAtlas('princess_peach', {atlas: 'atlas', frame: 'peach.png', frameWidth: 16, frameHeight: 24});
@@ -36,11 +36,12 @@ export default class GameScene extends Phaser.Scene {
     // Princess Peach
     this.peach = this.physics.add.sprite(600, 700, 'princess_peach', 0);
     // Kirby
-    this.kirby = this.physics.add.sprite(633, 832, 'kirby', 0);
+    this.kirby = this.physics.add.sprite(objek_layer[1].x, objek_layer[1].y, 'kirby', 0);
     // Donkey Kong
-    this.donkeykong = this.physics.add.sprite(40, 1184, 'donkeykong', 0);
+    this.donkeykong = this.physics.add.sprite(objek_layer[0].x, objek_layer[0].y, 'donkeykong', 0);
     // Bub from Bubble Bobble
-    this.bub = this.physics.add.sprite(1080, 1264, 'boble', 0);
+    console.log(objek_layer);
+    this.bub = this.physics.add.sprite(objek_layer[2].x, objek_layer[2].y, 'boble', 0);
     // Popo from Ice Climbers
     this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
     // Link from The Legend of Zelda
@@ -174,7 +175,6 @@ export default class GameScene extends Phaser.Scene {
   update(){
     this.controlHandler();
     this.deathChecker();
-    console.log(this.mario.x, this.mario.y);
     // if (this.spaceKey.isDown) {
     //   this.mario.body.velocity.x *= 1.8;
     // }

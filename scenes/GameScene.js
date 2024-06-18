@@ -46,7 +46,7 @@ export default class GameScene extends Phaser.Scene {
     // Link from The Legend of Zelda
     this.link = this.physics.add.sprite(775, 700, 'link', 0);
     // Luigi
-    this.luigi = this.physics.add.sprite(800, 700, 'luigi', 0);
+    this.luigi = this.physics.add.sprite(objek_layer[6].x, objek_layer[6].y, 'luigi', 0);
     // Mega Man
     this.megaman = this.physics.add.sprite(825, 700, 'megaman', 0);
     // Toad

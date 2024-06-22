@@ -445,8 +445,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":101.037991832332,
-                 "y":87.0814330175615
+                 "x":722.117038256422,
+                 "y":714.434005163107
                 }, 
                 {
                  "height":0,
@@ -519,6 +519,18 @@
                  "width":0,
                  "x":39.3550359162464,
                  "y":91.7010545621275
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"pizza logo",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":633.127920531627,
+                 "y":643.32512924475
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -527,7 +539,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":19,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

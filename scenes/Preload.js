@@ -8,6 +8,7 @@ import atlasPng from "/assets/char_sprites.png";
 import atlasJson from "/assets/char_sprites.json?url";
 import tileSet from "/assets/env_tile.png";
 import world from "/assets/world.json?url";
+import pizza from "/assets/pizza.png";
 
 
 export default class Preload extends Phaser.Scene {
@@ -26,6 +27,7 @@ export default class Preload extends Phaser.Scene {
     this.load.xml('kenney-mini', kenney_mini_xml);
     this.load.image('tiles', tileSet);
     this.load.tilemapTiledJSON('world', world);
+    this.load.spritesheet('pizza', pizza, {frameWidth: 16, frameHeight: 16});
   }
 
   create(){

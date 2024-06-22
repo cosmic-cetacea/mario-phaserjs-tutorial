@@ -52,6 +52,9 @@ export default class GameScene extends Phaser.Scene {
     // Toad
     this.toad = this.physics.add.sprite(objek_layer[5].x, objek_layer[5].y, 'toad', 0);
 
+    this.pizza_logo = this.add.sprite(objek_layer[10].x, objek_layer[10].y, 'pizza', 0);
+    this.add.text(objek_layer[10].x, objek_layer[10].y + 8, "Pizza", {fontStyle: 'strong', fontSize: '24px'}).setBackgroundColor('#000000').setOrigin(0.5, 0);
+
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
     this.mario = this.physics.add.sprite(objek_layer[3].x, objek_layer[3].y, 'mario', 0);
     this.mario.body.setCollideWorldBounds(true);

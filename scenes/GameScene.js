@@ -112,13 +112,6 @@ export default class GameScene extends Phaser.Scene {
       key: 'kanan',
       frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),
       repeat: -1,
-      frameRate: 10,
-    });
-
-    this.anims.create({
-      key: 'kanan-fast',
-      frames: this.anims.generateFrameNumbers('mario', {start: 2, end: 4}),
-      repeat: -1,
       frameRate: 20,
     });
 
@@ -151,7 +144,7 @@ export default class GameScene extends Phaser.Scene {
       key: 'kiri',
       frames: [{key: 'mario', frame: 21}, {key: 'mario', frame:20}, {key: 'mario', frame: 19}],
       repeat: -1,
-      frameRate: 10,
+      frameRate: 20,
     });
 
     this.keyboard = this.input.keyboard.createCursorKeys();

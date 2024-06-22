@@ -445,8 +445,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":993.93488000372,
-                 "y":78.6465893291652
+                 "x":638.520311492869,
+                 "y":83.545365125058
                 }, 
                 {
                  "height":0,
@@ -495,6 +495,18 @@
                  "width":0,
                  "x":1185.26944776885,
                  "y":139.356129252864
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"ice climber",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":717.689318964885,
+                 "y":87.9700901693424
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -503,7 +515,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":17,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

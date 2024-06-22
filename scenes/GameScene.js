@@ -42,7 +42,7 @@ export default class GameScene extends Phaser.Scene {
     // Bub from Bubble Bobble
     this.bub = this.physics.add.sprite(objek_layer[2].x, objek_layer[2].y, 'boble', 0);
     // Popo from Ice Climbers
-    this.ice_climber = this.physics.add.sprite(750, 700, 'ice_climber', 0);
+    this.ice_climber = this.physics.add.sprite(objek_layer[8].x, objek_layer[8].y, 'ice_climber', 0);
     // Link from The Legend of Zelda
     this.link = this.physics.add.sprite(775, 700, 'link', 0);
     // Luigi
@@ -80,6 +80,14 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 8,
     });
     this.kirby.anims.play('idle-kirby');
+
+    this.anims.create({
+      key: 'idle-climber',
+      frames: this.anims.generateFrameNumbers('ice_climber', {start: 0, end: 3}),
+      repeat: -1,
+      frameRate: 8,
+    });
+    this.ice_climber.anims.play('idle-climber');
 
     this.anims.create({
       key: 'idle-megaman',

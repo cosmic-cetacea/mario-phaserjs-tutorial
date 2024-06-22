@@ -44,7 +44,7 @@ export default class GameScene extends Phaser.Scene {
     // Popo from Ice Climbers
     this.ice_climber = this.physics.add.sprite(objek_layer[8].x, objek_layer[8].y, 'ice_climber', 0);
     // Link from The Legend of Zelda
-    this.link = this.physics.add.sprite(775, 700, 'link', 0);
+    this.link = this.physics.add.sprite(objek_layer[9].x, objek_layer[9].y, 'link', 0);
     // Luigi
     this.luigi = this.physics.add.sprite(objek_layer[6].x, objek_layer[6].y, 'luigi', 0);
     // Mega Man
@@ -96,6 +96,14 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 1,
     });
     this.megaman.anims.play('idle-megaman');
+
+    this.anims.create({
+      key: 'idle-link',
+      frames: this.anims.generateFrameNumbers('link', {start: 0, end: 1}),
+      repeat: -1,
+      frameRate: 4,
+    });
+    this.link.anims.play('idle-link');
 
     this.anims.create({
       key: 'kanan',

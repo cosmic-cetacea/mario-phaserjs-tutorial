@@ -48,7 +48,7 @@ export default class GameScene extends Phaser.Scene {
     // Luigi
     this.luigi = this.physics.add.sprite(objek_layer[6].x, objek_layer[6].y, 'luigi', 0);
     // Mega Man
-    this.megaman = this.physics.add.sprite(825, 700, 'megaman', 0);
+    this.megaman = this.physics.add.sprite(objek_layer[7].x, objek_layer[7].y, 'megaman', 0);
     // Toad
     this.toad = this.physics.add.sprite(objek_layer[5].x, objek_layer[5].y, 'toad', 0);
 
@@ -80,6 +80,14 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 8,
     });
     this.kirby.anims.play('idle-kirby');
+
+    this.anims.create({
+      key: 'idle-megaman',
+      frames: this.anims.generateFrameNumbers('megaman', {start: 0, end: 1}),
+      repeat: -1,
+      frameRate: 1,
+    });
+    this.megaman.anims.play('idle-megaman');
 
     this.anims.create({
       key: 'kanan',

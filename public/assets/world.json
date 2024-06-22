@@ -445,8 +445,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":1178.74998162994,
-                 "y":254.339568521184
+                 "x":993.93488000372,
+                 "y":78.6465893291652
                 }, 
                 {
                  "height":0,
@@ -483,6 +483,18 @@
                  "width":0,
                  "x":80,
                  "y":596
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"megaman",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1185.26944776885,
+                 "y":139.356129252864
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -491,7 +503,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":16,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

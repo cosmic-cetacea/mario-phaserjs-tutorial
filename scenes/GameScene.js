@@ -195,19 +195,19 @@ export default class GameScene extends Phaser.Scene {
   controlHandler(){
     if (this.keyboard.right.isDown){
       this.mario.anims.play('kanan', true);
-      this.mario.setVelocityX(100);
-      if (this.spaceKey.isDown) {
-        this.mario.body.velocity.x *= 2;
-        this.mario.anims.play({key: 'kanan', frameRate: 20}, true);
-      }
+      this.mario.setVelocityX(200);
+      // if (this.spaceKey.isDown) {
+      //   this.mario.body.velocity.x *= 2;
+      //   this.mario.anims.play({key: 'kanan', frameRate: 20}, true);
+      // }
     }
     else if (this.keyboard.left.isDown){
       this.mario.anims.play('kiri', true);
-      this.mario.setVelocityX(-100);
-      if (this.spaceKey.isDown) {
-        this.mario.body.velocity.x *= 2;
-        this.mario.anims.play({key: 'kiri', frameRate: 20}, true);
-      }
+      this.mario.setVelocityX(-200);
+      // if (this.spaceKey.isDown) {
+      //   this.mario.body.velocity.x *= 2;
+      //   this.mario.anims.play({key: 'kiri', frameRate: 20}, true);
+      // }
     }
     else {
       var deltaX = this.mario.body.deltaX();

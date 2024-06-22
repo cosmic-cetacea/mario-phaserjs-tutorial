@@ -18,8 +18,8 @@ export default {
 	title: "PhaserJS Super Mario Clone By Cosmic Cetacea / Pratama",
 	scene: [Preload, GameScene , PauseMenuHandler, ScoreScene],
   pixelArt: true,
-  scale: {
-    mode: Phaser.Scale.ScaleModes.FIT,
-    autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
-  },
+  // scale: {
+  //   mode: Phaser.Scale.ScaleModes.FIT,
+  //   autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
+  // },
 };

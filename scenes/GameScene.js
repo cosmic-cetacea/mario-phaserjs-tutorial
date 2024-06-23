@@ -150,7 +150,7 @@ export default class GameScene extends Phaser.Scene {
 
 
     Phaser.GameObjects.BitmapText.ParseFromAtlas(this, 'kenney-font', 'atlas', 'kenney_mini.png', 'kenney-mini');
-    this.deliveryToText = this.add.bitmapText(20, 40, 'kenney-font', "Deliver Pizza To: ...", 24);
+    this.deliveryToText = this.add.bitmapText(20, 40, 'kenney-font', "", 24);
     this.deliveryToText.setTintFill(0xffffff);
     this.deliveryToText.setScrollFactor(0);
 
@@ -212,8 +212,15 @@ export default class GameScene extends Phaser.Scene {
 
     evn.on("PAUSE", this.pauseGame, this);
 
-    this.startDelivery = this.add.timeline({
-      at: 1000,
+    this.startDelivery = this.add.timeline([
+      {
+        at: 500,
+        run: () => {
+          this.deliveryToText.setText("Deliver Pizza To: . . .");
+        }
+      },
+      {
+      at: 1500,
       run: () => {
         var random_index_num = Phaser.Math.Between(0,1);
         switch(random_index_num){
@@ -227,7 +234,8 @@ export default class GameScene extends Phaser.Scene {
         // this.overlap_char_group.getChildren()[0].active = true;
         this.overlap_char_list[random_index_num].active = true;
       }
-    });
+      }
+    ]);
 
     this.time.addEvent({delay: 2000, callback: () => {
       this.startDelivery.play();

@@ -148,6 +148,12 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
     });
 
+
+    Phaser.GameObjects.BitmapText.ParseFromAtlas(this, 'kenney-font', 'atlas', 'kenney_mini.png', 'kenney-mini');
+    this.deliveryToText = this.add.bitmapText(20, 40, 'kenney-font', "Deliver Pizza To: ...", 24);
+    this.deliveryToText.setTintFill(0xffffff);
+    this.deliveryToText.setScrollFactor(0);
+
     this.hold_pizza = false;
 
     this.keyboard = this.input.keyboard.createCursorKeys();
@@ -169,7 +175,10 @@ export default class GameScene extends Phaser.Scene {
     this.pizza_mario_overlap = this.physics.add.overlap(this.mario, this.pizza_logo, () => {
       this.hold_pizza = true;
       this.pizza_logo.setVisible(false);
-      this.suaraGetPizza.play();
+      // this.suaraGetPizza.play();
+      if (!this.suaraGetPizza.isPlaying){
+        this.suaraGetPizza.play();
+      }
     }, null, this);
 
     // this.physics.add.collider(this.koin, platform_layer);
@@ -185,17 +194,38 @@ export default class GameScene extends Phaser.Scene {
       }
     }, null, this);
     this.luigi_overlap.active = false;
-    this.overlap_char_list = [this.luigi_overlap];
+
+
+    this.kirby_overlap = this.physics.add.overlap(this.mario, this.kirby, () => {
+      if (this.hold_pizza) {
+        this.kirby_overlap.active = false;
+        evn.emit("ADD-SCORE");
+        this.suaraKoin.play();
+        this.hold_pizza = false;
+        this.pizza_logo.setVisible(true);
+        this.startDelivery.play();
+      }
+    }, null, this);
+    this.kirby_overlap.active = false;
+
+    this.overlap_char_list = [this.luigi_overlap, this.kirby_overlap];
 
     evn.on("PAUSE", this.pauseGame, this);
 
     this.startDelivery = this.add.timeline({
       at: 1000,
       run: () => {
-        var random_index_num = Phaser.Math.Between(0,5);
-        console.log(random_index_num);
+        var random_index_num = Phaser.Math.Between(0,1);
+        switch(random_index_num){
+          case 0:
+            this.deliveryToText.setText("Deliver Piza To: Luigi");
+            break;
+          case 1:
+            this.deliveryToText.setText("Deliver Pizza To: Kirby");
+            break;
+        }
         // this.overlap_char_group.getChildren()[0].active = true;
-        this.overlap_char_list[0].active = true;
+        this.overlap_char_list[random_index_num].active = true;
       }
     });
 
@@ -219,29 +249,16 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  getCoin(pplatform_layer, koin){
-    evn.emit("ADD-SCORE");
-    this.suaraKoin.play();
-    koin.destroy();
-  }
-
   update(){
     this.controlHandler();
     this.deathChecker();
-    // if (this.spaceKey.isDown) {
-    //   this.mario.body.velocity.x *= 1.8;
-    // }
-  //   if (this.special_platform.y < this.mario.y){
-  //     this.platcol.active = false;
-  //   } else {
-  //     this.platcol.active = true;
-  //   }
   }
 
   deathChecker() {
     if (this.mario.y > 1920) {
       this.mario.destroy();
       this.suaraMati.play();
+      this.cameras.main.flash(1000, 255, 0, 0);
       this.scene.restart();
     }
   }
@@ -250,18 +267,10 @@ export default class GameScene extends Phaser.Scene {
     if (this.keyboard.right.isDown){
       this.mario.anims.play('kanan', true);
       this.mario.setVelocityX(200);
-      // if (this.spaceKey.isDown) {
-      //   this.mario.body.velocity.x *= 2;
-      //   this.mario.anims.play({key: 'kanan', frameRate: 20}, true);
-      // }
     }
     else if (this.keyboard.left.isDown){
       this.mario.anims.play('kiri', true);
       this.mario.setVelocityX(-200);
-      // if (this.spaceKey.isDown) {
-      //   this.mario.body.velocity.x *= 2;
-      //   this.mario.anims.play({key: 'kiri', frameRate: 20}, true);
-      // }
     }
     else {
       var deltaX = this.mario.body.deltaX();

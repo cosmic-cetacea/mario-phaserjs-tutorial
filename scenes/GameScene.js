@@ -208,7 +208,20 @@ export default class GameScene extends Phaser.Scene {
     }, null, this);
     this.kirby_overlap.active = false;
 
-    this.overlap_char_list = [this.luigi_overlap, this.kirby_overlap];
+
+    this.donkeykong_overlap = this.physics.add.overlap(this.mario, this.donkeykong, () => {
+      if (this.hold_pizza) {
+        this.donkeykong.active = false;
+        evn.emit("ADD-SCORE");
+        this.suaraKoin.play();
+        this.hold_pizza = false;
+        this.pizza_logo.setVisible(true);
+        this.startDelivery.play();
+      }
+    }, null, this);
+    this.donkeykong_overlap.active = false;
+
+    this.overlap_char_list = [this.luigi_overlap, this.kirby_overlap, this.donkeykong_overlap];
 
     evn.on("PAUSE", this.pauseGame, this);
 
@@ -222,13 +235,16 @@ export default class GameScene extends Phaser.Scene {
       {
       at: 1500,
       run: () => {
-        var random_index_num = Phaser.Math.Between(0,1);
+        var random_index_num = Phaser.Math.Between(0,2);
         switch(random_index_num){
           case 0:
             this.deliveryToText.setText("Deliver Piza To: Luigi");
             break;
           case 1:
             this.deliveryToText.setText("Deliver Pizza To: Kirby");
+            break;
+          case 2:
+            this.deliveryToText.setText("Deliver Pizza To: Donkey Kong");
             break;
         }
         // this.overlap_char_group.getChildren()[0].active = true;

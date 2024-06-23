@@ -27,11 +27,12 @@ export default class GameScene extends Phaser.Scene {
     this.textures.addSpriteSheetFromAtlas('toad', {atlas: 'atlas', frame: 'toad.png', frameWidth: 16, frameHeight: 24});
     
     this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    this.koin = this.physics.add.image(100, 80, 'atlas', 'kirby.png');
+    // this.koin = this.physics.add.image(100, 80, 'atlas', 'kirby.png');
     this.suaraKoin = this.sound.add('tring');
     this.suaraPause = this.sound.add('pause-sound');
     this.suaraLompat = this.sound.add('jump-sound');
     this.suaraMati = this.sound.add('die-sound');
+    this.suaraGetPizza = this.sound.add('getPizza-sound');
   
     // Princess Peach
     this.peach = this.physics.add.sprite(objek_layer[4].x, objek_layer[4].y, 'princess_peach', 0);
@@ -52,7 +53,7 @@ export default class GameScene extends Phaser.Scene {
     // Toad
     this.toad = this.physics.add.sprite(objek_layer[5].x, objek_layer[5].y, 'toad', 0);
 
-    this.pizza_logo = this.add.sprite(objek_layer[10].x, objek_layer[10].y, 'pizza', 0);
+    this.pizza_logo = this.physics.add.staticSprite(objek_layer[10].x, objek_layer[10].y, 'pizza', 0);
     this.add.text(objek_layer[10].x, objek_layer[10].y + 8, "Pizza", {fontStyle: 'strong', fontSize: '24px'}).setBackgroundColor('#000000').setOrigin(0.5, 0);
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, false, false);
@@ -147,6 +148,8 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
     });
 
+    this.hold_pizza = false;
+
     this.keyboard = this.input.keyboard.createCursorKeys();
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.mario);
@@ -163,12 +166,43 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.luigi, platform_layer);
     this.physics.add.collider(this.megaman, platform_layer);
     this.physics.add.collider(this.toad, platform_layer);
+    this.pizza_mario_overlap = this.physics.add.overlap(this.mario, this.pizza_logo, () => {
+      this.hold_pizza = true;
+      this.pizza_logo.setVisible(false);
+      this.suaraGetPizza.play();
+    }, null, this);
 
-
-    this.physics.add.collider(this.koin, platform_layer);
-    this.physics.add.overlap(this.mario, this.koin, this.getCoin, null, this);
+    // this.physics.add.collider(this.koin, platform_layer);
+    // this.physics.add.overlap(this.mario, this.koin, this.getCoin, null, this);
+    this.luigi_overlap = this.physics.add.overlap(this.mario, this.luigi, () => {
+      if (this.hold_pizza) {
+        this.luigi_overlap.active = false;
+        evn.emit("ADD-SCORE");
+        this.suaraKoin.play();
+        this.hold_pizza = false;
+        this.pizza_logo.setVisible(true);
+        this.startDelivery.play();
+      }
+    }, null, this);
+    this.luigi_overlap.active = false;
+    this.overlap_char_list = [this.luigi_overlap];
 
     evn.on("PAUSE", this.pauseGame, this);
+
+    this.startDelivery = this.add.timeline({
+      at: 1000,
+      run: () => {
+        var random_index_num = Phaser.Math.Between(0,5);
+        console.log(random_index_num);
+        // this.overlap_char_group.getChildren()[0].active = true;
+        this.overlap_char_list[0].active = true;
+      }
+    });
+
+    this.time.addEvent({delay: 2000, callback: () => {
+      this.startDelivery.play();
+    }, callbackScope: this});
+
     
   }
 

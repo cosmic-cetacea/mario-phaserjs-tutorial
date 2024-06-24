@@ -260,7 +260,20 @@ export default class GameScene extends Phaser.Scene {
     }, null, this);
     this.iceclimber_overlap.active = false;
 
-    this.overlap_char_list = [this.luigi_overlap, this.kirby_overlap, this.donkeykong_overlap, this.toad_overlap, this.bub_overlap, this.iceclimber_overlap];
+
+    this.megaman_overlap = this.physics.add.overlap(this.mario, this.megaman, () => {
+      if (this.hold_pizza) {
+        this.megaman_overlap.active = false;
+        evn.emit("ADD-SCORE");
+        this.suaraKoin.play();
+        this.hold_pizza = false;
+        this.pizza_logo.setVisible(true);
+        this.startDelivery.play();
+      }
+    }, null, this);
+    this.megaman_overlap.active = false;
+
+    this.overlap_char_list = [this.luigi_overlap, this.kirby_overlap, this.donkeykong_overlap, this.toad_overlap, this.bub_overlap, this.iceclimber_overlap, this.megaman_overlap];
 
     evn.on("PAUSE", this.pauseGame, this);
 
@@ -274,7 +287,7 @@ export default class GameScene extends Phaser.Scene {
       {
       at: 1500,
       run: () => {
-        var random_index_num = Phaser.Math.Between(0,5);
+        var random_index_num = Phaser.Math.Between(0,6);
         switch(random_index_num){
           case 0:
             this.deliveryToText.setText("Deliver Piza To: Luigi");
@@ -293,6 +306,9 @@ export default class GameScene extends Phaser.Scene {
             break;
           case 5:
             this.deliveryToText.setText("Deliver Pizza To: Ice Climber");
+            break;
+          case 6:
+            this.deliveryToText.setText("Deliver Pizza To: Megaman");
             break;
         }
         // this.overlap_char_group.getChildren()[0].active = true;
